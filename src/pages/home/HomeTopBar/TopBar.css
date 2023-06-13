@@ -1,0 +1,12 @@
+
+*{
+    font-family: 'Pacifico' cursive !important;
+}
+
+
+
+@media (max-width:650px) {
+    .under-line{
+        border-bottom: 1px solid black;
+    }
+}

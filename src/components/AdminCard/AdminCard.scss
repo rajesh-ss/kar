@@ -1,0 +1,52 @@
+
+.card-body{
+    cursor: pointer;
+    min-height: 250px;
+    box-shadow:  0px 0px 10px #00000069;
+    border-radius: 10px;
+    // min-height: 600px;
+    // overflow-y: scroll;
+    font-family: 'Pacifico' cursive !important;
+    text-transform: lowercase !important;
+
+}
+
+.card-body:hover{
+    // box-shadow: inset 0px 0px  15px #89bc919f;
+    animation: mymove 1s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    // transform: scale(0.5,1.1);
+    // z-index: 1000;
+    border-radius: 10px;
+    border: 0px solid #ffffff;
+    background-color: rgba(252, 246, 246, 0.05);
+   
+}
+
+@keyframes mymove {
+    from {
+        box-shadow: inset 0px 0px 35px #00000069;
+   
+    }
+    to{
+    
+        box-shadow: inset 0px 0px 35px #0505059f;
+    }
+  }
+
+.nav-tabs{
+    background-color: #ffffff !important;
+    // border: 1px solid black;
+    box-shadow:  0px 0px 5px #00000069;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    color: #000 !important;
+    
+}
+
+li .active {
+    color: #000 !important;
+    background-color: rgba(137, 43, 226, 0.551) !important;
+}
