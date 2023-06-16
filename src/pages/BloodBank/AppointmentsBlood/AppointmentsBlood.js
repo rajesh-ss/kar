@@ -185,7 +185,6 @@ const AppointmentsBlood = () => {
                         if (response.status === 200) {
                             setCancelled(response.data)
                             // setUpComingDon(response.data)
-                     
                         }
                         else {
                             console.log("response")

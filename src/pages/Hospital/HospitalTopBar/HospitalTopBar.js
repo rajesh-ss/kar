@@ -38,10 +38,13 @@ import logo from "../../../assests/icoOrgan.png"
                     
                     <Nav.Link  href='/hospital/request'>HOME</Nav.Link>
                     <Nav.Link href='/hospital/donorReg'>DONOR REGISTRY</Nav.Link>
-                    <Nav.Link href='/hospital/blood-request'>CREATE BLOOD REQUEST</Nav.Link>
-                    <Nav.Link href='/hospital/organ-request'>CREATE ORGAN REQUEST</Nav.Link>
-
-
+                    {/* <Nav.Link href='/hospital/blood-request'>CREATE BLOOD REQUEST</Nav.Link> */}
+                    <Nav.Link href='/hospital/organ-request'>Organ Request</Nav.Link>
+                    <Nav.Link href='/hospital/blood-request'>Blood Request</Nav.Link>
+                    <Nav.Link href='/hospital/trans-under-process'>Transplant progress</Nav.Link>
+                    <Nav.Link href='/hospital/emergency-service'>Emergency</Nav.Link>
+                    
+                    {/* trans-under-process */}
                     <Nav.Link  onClick={handleLogout}>LOGOUT</Nav.Link>
                     
                     </Nav>

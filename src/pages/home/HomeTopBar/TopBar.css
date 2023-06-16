@@ -1,8 +1,7 @@
 
 *{
-    font-family: 'Pacifico' cursive !important;
+    font-family: 'Roboto Mono', monospace; 
 }
-
 
 
 @media (max-width:650px) {

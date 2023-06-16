@@ -10,7 +10,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Form from 'react-bootstrap/Form';
 import StockBLd from '../../../components/Stock/StockBLd';
 import { Button } from 'react-bootstrap';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { envs } from '../../../utils/endpoint';
@@ -51,6 +51,8 @@ const initialStage = {
 export const Stock = () => {
 
     const [newBloodDis, setNewBloodDis] = useState(false)
+    // const navigate = useLocation();
+    const jj = useLocation();
     const navigate = useNavigate();
 
     const [stockWhole, setStockWhole] = useState([initialStage]);
@@ -62,7 +64,9 @@ export const Stock = () => {
         setNewBloodDis((prev) => !prev)
     }
     const handleProceed = ()=>{
-        navigate("terms");
+        
+        console.log(jj.pathname)
+        navigate("/bloodbank/terms");
     }
 //whole
     useEffect(()=>{

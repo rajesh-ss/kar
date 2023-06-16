@@ -70,24 +70,6 @@ const HospitalMedicalDetails = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // const form = {
-        //     "fname": "Goutham",
-        //     "mname": "Reddy",
-        //     "lname": "D",
-        //     "email": "dfdfdfdfdfdfdfdf@gmail.com",
-        //     "password": "123456",
-        //     "address": "bglore Kr puram",
-        //     "phone": 8998989899,
-        //     "sex": "Male",
-        //     "DOB": "2001-08-07T12:39:45.734+00:00",
-        //     "age": 22,
-        //     "bloodgroup": "A+",
-        //     "aadharId": 551675114222,
-        //     "emergencycontactname": "Mothers name",
-        //     "emergencycontactphone": 5656565698,
-        // }
-
         async function callApi() {
             try {
                 await axios
@@ -95,11 +77,14 @@ const HospitalMedicalDetails = () => {
                     .then((response) => {
                         console.log(response.status)
                         if (response.status === 200) {
-                            localStorage.setItem('id', response.data._id)
+                            localStorage.setItem('donorDetails', JSON.stringify(response.data.donorDetails))
+                            localStorage.setItem('orgnRequestlist',  JSON.stringify(response.data.OrganRequestlist))
+
                             toast.success("Succesfully Registered :)", {
                                 toastId: 'donor register'
                             })
-                            setTimeout(navigate('/donor/login'), 8000);
+
+                            setTimeout(navigate('/hospital/waiting-recipent'), 2000);
                         }
                         else {
                             toast.error("Something went wrong :(", {

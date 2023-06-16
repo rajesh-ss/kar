@@ -1,11 +1,18 @@
 import  { Fragment, react } from 'react'
 import { Outlet } from 'react-router-dom';
 import DonorTopBar from './DonorTopBar/DonorTopBar';
+import { useLocation } from 'react-router-dom';
 
 const DonorWrapper = ()=> {
+
+    const location = useLocation();
+    console.log(location)
     return (
         <Fragment>
-            <DonorTopBar/>
+            {
+                location.pathname !== '/donor/login' &&  <DonorTopBar/>
+            }
+           
             <Outlet/>
         </Fragment>
     )

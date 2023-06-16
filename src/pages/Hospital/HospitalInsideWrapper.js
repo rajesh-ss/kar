@@ -8,8 +8,9 @@ const HospitalInsideWrapper = ()=> {
     return (
         <Fragment>
             {
-                localStorage.getItem('hospital_is_logged') && <HospitalTopBar/>
-                // location.pathname === '/bloodbank/register') ? <BloodBankTopBar/>:''
+                
+            location.pathname !== '/hospital/login' &&  <HospitalTopBar/>     
+            
             }
             <Outlet/>
             

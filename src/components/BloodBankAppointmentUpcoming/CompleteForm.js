@@ -5,6 +5,7 @@ import { envs } from '../../utils/endpoint';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import correct from "../../assests/correct.png";
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -17,6 +18,8 @@ export const CompleteForm = (props) => {
     const [permanentBanReason, setPermanenetBanReason] = useState('');
     const [onDateTemp, setOnDateTemp] = useState('');
     const [showInsertCard, setShowInsertCard] = useState(false);
+    const navigate = useNavigate()
+    const [showOk, setShowOk] = useState(false)
     const [rfidDataInsert, setRfidDataInsert] = useState({
         "_id": "",
         "bloodgroup": "",
@@ -84,7 +87,8 @@ export const CompleteForm = (props) => {
                             toast.success(`Succesfully Inserted`, {
                                 toastId: 'blood bank register'
                             })
-
+                            // setShowInsertCard(false)
+                            setShowOk(true)
                             // props?.callForApiCallRerender();
 
                         }
@@ -92,15 +96,20 @@ export const CompleteForm = (props) => {
                             toast.error(`unable to verify`, {
                                 toastId: 'blood bank register'
                             })
+                            // setShowInsertCard(false)
+                            // setShowOk(true)
                             throw Error;
                         }
                     })
+
             }
             catch (e) {
                 console.log(e);
             }
         }
         callApi();
+
+        window.location.reload(false);
     }
 
 
@@ -190,15 +199,17 @@ export const CompleteForm = (props) => {
                                 toastId: 'blood bank register'
                             })
                             // props?.callForApiCallRerender();
-                            
+                            // setShowInsertCard(false)
                             setRfidDataInsert(response.data)
-                             setShowInsertCard(true)
+                            //  setShowInsertCard(true)
                         }
                         else {
                             toast.error(`unable to verify ${props.name}`, {
                                 toastId: 'blood bank register'
                             })
+                            // setShowInsertCard(false)
                             throw Error;
+                            
                         }
                     })
             }
@@ -416,18 +427,48 @@ export const CompleteForm = (props) => {
                     </div>
                     <div className='img-dis'>
                     <img src={correct} alt='correct ico' height={60} width={60}/>
+                    {
+                      showOk ? <>
+                    <button className='btn btn-success rounded' onClick={()=>{
 
-                    <p>Name: {rfidDataInsert.donorDetails.fname}</p>
-                    <p>Phone: {rfidDataInsert.donorDetails.phone}</p>
-                    <p>Blood group: {rfidDataInsert.donorDetails.bloodgroup}</p>
-                    <p>Sex: {rfidDataInsert.donorDetails.sex}</p>
-                    <p>Age: {rfidDataInsert.donorDetails.age}</p>
-
+                    }}>Ok</button>
+                      
+                      </> : <> <p>Name: {rfidDataInsert.donorDetails.fname}</p>
+                      <p>Phone: {rfidDataInsert.donorDetails.phone}</p>
+                      <p>Blood group: {rfidDataInsert.donorDetails.bloodgroup}</p>
+                      <p>Sex: {rfidDataInsert.donorDetails.sex}</p>
+                      <p>Age: {rfidDataInsert.donorDetails.age}</p>
                     <button className='btn btn-success rounded' onClick={handleInsert}>INSERT</button>
+                      
+                      </> 
+                    }
+                   
+
                     </div>
                    
                 </div>
             </div>
+        }
+
+        {
+            showOk && 
+            <div className='box'>
+            <div className='header'>
+            <h4>Details About to be Written into the RFID TAG ARE:</h4>
+            <span onClick={handleCloseX}>X</span>
+            </div>
+            <div className='img-dis'>
+            <img src={correct} alt='correct ico' height={60} width={60}/>
+
+            <button className='btn btn-success rounded' onClick={()=>{
+                    // navigate('/bloodBank/appoint')
+                   setTimeout(window.location.reload(false), 8000);
+            }}>ok</button>
+                    </div>
+                   
+                </div>
+           
+            
         }
         </Fragment>
     )

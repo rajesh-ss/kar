@@ -33,13 +33,13 @@
     text-align: center;
     font-size: 25px;
     background-color: #fff;
-    font-family: 'Pacifico' cursive !important;
+    font-family: 'Roboto Mono', monospace;  
 }
 
 .login-type{
     font-weight: bold;
     font-size: large;
-    font-family: 'Pacifico' cursive !important;
+    font-family: 'Roboto Mono', monospace;  
     width: 40%;
     border-bottom: 1px solid #3f3d3d44;
     text-align: center;
@@ -59,7 +59,7 @@
     border: none;
     height: 40px;
     width: 60%;
-    font-family: 'Pacifico' cursive !important;
+    font-family: 'Roboto Mono', monospace;  
     text-align: center;
 }
 
@@ -72,7 +72,7 @@
 .form-sty label{
     /* border: 1px solid black; */
     width: 60%;
-    font-family: 'Pacifico' cursive !important;
+    font-family: 'Roboto Mono', monospace;  
 
 }
 
@@ -82,7 +82,7 @@
     border: 1px solid #74707045;
     padding: 7px 20px;
     box-shadow:  1px 1px 5px #74707045;
-    font-family: 'Pacifico' cursive !important;
+    font-family: 'Roboto Mono', monospace;  
 }
 
 .form-sty button:hover{

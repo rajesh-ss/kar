@@ -57,14 +57,17 @@ import HospitalLogin from "./pages/Hospital/HospitalLogin/HospitalLogin";
 import HoscreateBloodRequest from './pages/Hospital/HoscreateBloodRequest/HoscreateBloodRequest';
 import HoscreateOrganRequest from './pages/Hospital/HoscreateOrganRequest/HoscreateOrganRequest';
 import HospitalMedicalDetails from './pages/Hospital/HospitalMedicalDetails/HospitalMedicalDetails';
+import BloodRequest from './pages/Hospital/BloodRequest/BloodRequest';
+import WaitingReceptionistDetails from './pages/Hospital/WaitingReceptionistDetails/WaitingReceptionistDetails';
+import TransplantationUnderProcess from './pages/Hospital/TransplantationUnderProcess/TransplantationUnderProcess';
+import EmergencyService from './pages/Hospital/EmergencyService/EmergencyService';
 
 // ---------------------------------------------------------------------
 //                   ADMIN IMPORTS
 // ---------------------------------------------------------------------
 import AdminWrapper from './pages/Admin/AdminWrapper';
 import AdminRegis from './pages/Admin/AdminRegis/AdminRegis';
-import AdminLogin from './pages/Admin/AdminLogin/AdminLogin'
-
+import AdminLogin from './pages/Admin/AdminLogin/AdminLogin';
 
 
 const App = () => {
@@ -139,17 +142,20 @@ const App = () => {
             <Route path='login' element={<HospitalLogin/>} />
             <Route path='request' element={<HosBloodRequest />} />
             <Route path='donorReg' element={<HosDonReg />} />
-            <Route path='blood-request' element={<HoscreateBloodRequest />} />
             <Route path='organ-request' element={<HoscreateOrganRequest />} />
             <Route path='hos-don-det' element={<HospitalMedicalDetails/>}/>
+            <Route path='blood-request' element={<BloodRequest/>}/>
+            <Route path='waiting-recipent' element={<WaitingReceptionistDetails/>}/>
+            <Route path='trans-under-process' element={<TransplantationUnderProcess/>}/>
+            <Route path='emergency-service' element={<EmergencyService/>}/>
+
             <Route path='*' element={<Navigate to="./register" />} />
+            
           </Route>
 
           {/* ---------------------------------------------------
                Admin Routes
          ------------------------------------------------------- */}
-
-
           <Route path='/admin/' element={<AdminWrapper />}>
             <Route path='' element={<Navigate to="./login" />} />
             <Route path='login' element={<AdminLogin/>}/>
