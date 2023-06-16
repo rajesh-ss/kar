@@ -1,12 +1,46 @@
 import { useState, Fragment } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import axios from "axios";
+import { envs } from "../../../utils/endpoint";
+import { toast } from "react-toastify";
 
 
 
-
-
+const baseURL = envs.endpoint;
 export const Terms = () => {
+
+  async function callApi() {
+    try {
+        await axios
+            .put(`${baseURL}/bloodbank/stock/new/permanentban/`)
+            .then((response) => {
+                console.log(response.status)
+                if (response.status === 200) {
+                    toast.success(``, {
+                        toastId: 'blood bank '
+                    })
+                }
+                else {
+                    toast.error(``, {
+                        toastId: 'blood bank '
+                    })
+                    throw Error;
+                }
+            })
+    }
+    catch (e) {
+        console.log(e);
+    }
+
+callApi();
+}
+
+  const handleRadio = ()=>{
+
+
+  }
+
   return (
     <Fragment>
       <div className="mx-5 px-5 my-5">
@@ -140,6 +174,9 @@ export const Terms = () => {
             id={`Permanent`}
             label={`Permanent Ban`}
             style={{margin:"0px 20px 0px 0px"}}
+            name='ban'
+            value={'perBan'}
+            onChange={handleRadio}
           />
 
           <Form.Check
@@ -147,6 +184,9 @@ export const Terms = () => {
             label={`Temporary`}
             id={`Temporary Ban`}
             style={{margin:"0px 0px 0px 20px"}}
+            name='ban'
+            value={'tempBan'}
+            onChange={handleRadio}
 
           />
     

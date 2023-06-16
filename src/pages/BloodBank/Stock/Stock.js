@@ -14,6 +14,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { envs } from '../../../utils/endpoint';
+import './BloodBankAppointmentUpcoming.scss';
+import correct from "../../../assests/correct.png";
 
 
 
@@ -59,6 +61,10 @@ export const Stock = () => {
     const [stockRbc, setStockRbc] = useState([initialStage]);
     const [stockPlasma, setStockPlasma] = useState([initialStage])
     const [stockPlatelets, setStockPlatelets] = useState([initialStage]);
+    const [oneOverLay, setOneOverLay] = useState(false);
+    const [twoOverLay, setTwoOverLay] = useState(false);
+    const [detailsOfPacket, setDetailsOfPacket] = useState({});
+
 
     const newBloodPacketHandler = (event) => {
         setNewBloodDis((prev) => !prev)
@@ -66,7 +72,8 @@ export const Stock = () => {
     const handleProceed = ()=>{
         
         console.log(jj.pathname)
-        navigate("/bloodbank/terms");
+        setOneOverLay(true);
+        // navigate("/bloodbank/terms");
     }
 //whole
     useEffect(()=>{
@@ -196,9 +203,115 @@ useEffect(()=>{
     callApi();
 }, [])
 
+const handleCloseX = ()=>{
+    setOneOverLay(false)
+}
+
+
+const rfidGet = ()=>{
+    async function callApi() {
+        try {
+            await axios
+                .get(`${baseURL}/bloodbank/stock/new/details`,)
+                .then((response) => {
+                    console.log(response.status)
+                    if (response.status === 200) {
+                        // toast.success(`Succesfully `, {
+                        //     toastId: 'blood bank register'
+                        // })
+                        console.log(response.data['donorDetails'])
+                        setDetailsOfPacket(response.data['donorDetails'])
+                    }
+                    else {
+                        toast.error(`something went wrong`, {
+                            toastId: 'blood bank register'
+                        })
+                        throw Error;
+                    }
+                })
+        }
+        catch (e) {
+            console.log(e);
+        }
+    }
+    callApi();
+}
+
     console.log(stockWhole)
     return (
         <Fragment>
+            { oneOverLay ? twoOverLay?<>
+                <div className='card_insert'>
+                <div className='box'>
+                    <div className='header'>
+                    <h4>Details of the Packet</h4>
+                    <span onClick={handleCloseX}>X</span>
+                    </div>
+                    <div className='img-dis'>
+                    <img src={correct} alt='correct ico' height={60} width={60}/>
+                    {
+                    <>
+                    <button className='btn btn-success rounded' onClick={()=>{
+                       navigate("/bloodbank/terms");
+                    }}>Proceed</button>
+                      
+                    </> 
+                     
+                    }
+                   
+
+                    </div>
+                   
+                </div>
+            </div> 
+                
+            </>:<>
+
+                <div className='card_insert'>
+                <div className='box'>
+                    <div className='header'>
+                    <h4>PUT RFID TAG NEAR THE READER</h4>
+                    <span onClick={handleCloseX}>X</span>
+                    </div>
+                    <div className='img-dis'>
+                    <img src={correct} alt='correct ico' height={60} width={60}/>
+                    {
+                    <>
+                    <button className='btn btn-success rounded' onClick={rfidGet}>Read Data</button>
+                      
+                    </> 
+                     
+                    }
+                   
+
+                    </div>
+                   
+                </div>
+            </div> </>:<>
+            {/* <div className='card_insert'>
+                <div className='box'>
+                    <div className='header'>
+                    <h4>DETAILS OF THE PACKET ARE:</h4>
+                    <span onClick={handleCloseX}>X</span>
+                    </div>
+                    <div className='img-dis'>
+                    <img src={correct} alt='correct ico' height={60} width={60}/>
+                    <p>Donor Name {}</p>
+                    {
+                    <>
+                    <button className='btn btn-success rounded' onClick={rfidGet}>Proceed</button>
+                      
+                    </> 
+                     
+                    }
+                   
+
+                    </div>
+                   
+                </div>
+            </div>  */}
+            </>
+            }
             <div className='mx-5 p-2'>
                 <h5 className="my-4 mx-5 " >ARRIVAL OF A NEW BLOOD PACKET: </h5>
 
