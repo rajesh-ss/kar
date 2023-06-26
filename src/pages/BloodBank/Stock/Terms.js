@@ -4,36 +4,53 @@ import Button from 'react-bootstrap/Button';
 import axios from "axios";
 import { envs } from "../../../utils/endpoint";
 import { toast } from "react-toastify";
+import './BloodBankAppointmentUpcoming.scss';
+import { useNavigate } from "react-router-dom";
 
 
 
 const baseURL = envs.endpoint;
 export const Terms = () => {
 
-  async function callApi() {
-    try {
-        await axios
-            .put(`${baseURL}/bloodbank/stock/new/permanentban/`)
-            .then((response) => {
-                console.log(response.status)
-                if (response.status === 200) {
-                    toast.success(``, {
-                        toastId: 'blood bank '
-                    })
-                }
-                else {
-                    toast.error(``, {
-                        toastId: 'blood bank '
-                    })
-                    throw Error;
-                }
-            })
-    }
-    catch (e) {
-        console.log(e);
-    }
+  const [oneOverlay, setOneOverLay] = useState(false);
+  const [twoOverlay, setTwoOverlay] = useState(false);
+  const [permanentBanReason, setPermanentBanReason] = useState();
+  const [tempBanDate, setTmpBanDate] = useState();
 
-callApi();
+  const navigate = useNavigate();
+
+  const handleSubmit = ()=>{
+    
+  }
+
+  async function callApi() {
+
+
+    console.log()
+    // try {
+    //     await axios
+    //         .put(`${baseURL}/bloodbank/stock/new/permanentban/`)
+    //         .then((response) => {
+    //             console.log(response.status)
+    //             if (response.status === 200) {
+    //                 toast.success(``, {
+    //                     toastId: 'blood bank '
+    //                 })
+    //                 setOneOverLay(true)
+    //             }
+    //             else {
+    //                 toast.error(``, {
+    //                     toastId: 'blood bank '
+    //                 })
+    //                 throw Error;
+    //             }
+    //         })
+    // }
+    // catch (e) {
+    //     console.log(e);
+    // }
+
+  callApi();
 }
 
   const handleRadio = ()=>{
@@ -41,8 +58,124 @@ callApi();
 
   }
 
+  const handelrCloseOneOverlay = ()=>{
+    setOneOverLay(false);
+  }
+
+  const permanentBanReasonSubmit = ()=>{
+    async function callApi() {
+          try {
+              await axios
+                  .put(`${baseURL}/bloodbank/stock/new/permanentban/${localStorage.getItem('stock_details_id')}`,{
+                    'permanentbanreason':permanentBanReason,
+                  })
+                  .then((response) => {
+                      console.log(response.status)
+                      if (response.status === 200) {
+                          toast.success(`Succesfully verfied `, {
+                              toastId: 'blood bank register'
+                          })
+                          navigate('hospital/stock')
+                      }
+                      else {
+                          toast.error(`unable to verify`, {
+                              toastId: 'blood bank register'
+                          })
+                          throw Error;
+                      }
+                  })
+          }
+          catch (e) {
+              console.log(e);
+          }
+      }
+      callApi();
+      setTimeout(()=>{
+        setOneOverLay(false);
+      }, 6000);
+  }
+
+  const handleTempBan = ()=>{
+    async function callApi() {
+      try {
+          await axios
+              .put(`${baseURL}/bloodbank/stock/new/temporaryban/${localStorage.getItem('stock_details_id')}`,{
+                'eligibledate':tempBanDate,
+              })
+              .then((response) => {
+                  console.log(response.status)
+                  if (response.status === 200) {
+                      toast.success(`Succesfully verfied `, {
+                          toastId: 'blood bank register'
+                      })
+                      navigate('/hospital/stock')
+                  }
+                  else {
+                      toast.error(`unable to verify`, {
+                          toastId: 'blood bank register'
+                      })
+                      throw Error;
+                  }
+              })
+      }
+      catch (e) {
+          console.log(e);
+      }
+  }
+  callApi();
+  setTimeout(()=>{
+    setTwoOverlay(false);
+  }, 6000);
+
+  }
+
+  const handleCloseTwoOverlay = ()=>{
+    setTwoOverlay(false);
+  }
+
   return (
     <Fragment>
+      {
+        oneOverlay && <>
+
+        <div className='card_insert'>
+        <div className='box'>
+            <div className='header'>
+            <h4>Permanent Ban Reason</h4>
+            <span onClick={handelrCloseOneOverlay} >X</span>
+            </div>
+            <div className='img-dis'>
+              <lable id='getPermanentBanReason'></lable>
+            <input id='getPermanentBanReason'type='text'  onChange={(e)=>{setPermanentBanReason(e.target.value)}}></input>
+            <button className='btn btn-success rounded' onClick={permanentBanReasonSubmit}>Submit</button>
+            </div>
+           
+        </div>
+    </div> </>
+      }
+
+      {
+          twoOverlay && <>
+
+                <div className='card_insert ' >
+                <div className='box w-50'>
+                    <div className='header my-2 p-2'>
+                    <h2 className="text-center w-100">Temporary Ban</h2>
+                    <span onClick={handleCloseTwoOverlay}>X</span>
+                    </div>
+                   
+                    <div className='img-dis'>
+                   
+                      <lable id='getPermBan' className='mt-5'>Eligible Date</lable>
+                    <input id='getPermBan' type='date' onChange={(e)=>{setTmpBanDate(e.target.value)}}></input>
+                    <button className='btn btn-success rounded my-3' onClick={handleTempBan}>Submit</button>
+                    </div>
+                   
+                </div>
+            </div> </>
+      }
+
+
       <div className="mx-5 px-5 my-5">
         <h4>{"You’re Not Eligible To Donate Permanently If:"}</h4>
         <ol>
@@ -177,6 +310,7 @@ callApi();
             name='ban'
             value={'perBan'}
             onChange={handleRadio}
+            onClick={()=> setOneOverLay(true)}
           />
 
           <Form.Check
@@ -187,11 +321,24 @@ callApi();
             name='ban'
             value={'tempBan'}
             onChange={handleRadio}
+            onClick={()=> setTwoOverlay(true)}
 
+          />
+          <Form.Check
+            type='radio'
+            label={`Eligible`}
+            id={`eligible`}
+            style={{margin:"0px 0px 0px 20px"}}
+            name='ban'
+            value={'eligible'}
+            onChange={handleRadio}
+            onClick={()=>{
+              navigate('/bloodbank/eligible-stock')
+            }}
           />
     
     </Form>
-    <Button className="my-5" variant="primary">submit</Button>
+    <Button className="my-5" variant="primary" onClick={handleSubmit}>submit</Button>
     </div>
         
       </div>

@@ -22,8 +22,9 @@ import { useNavigate } from 'react-router-dom';
                 <Navbar.Toggle aria-controls="basic-navbar-nav " />
                 <Navbar.Collapse id="basic-navbar-nav" className=" ">
                     <Nav className="me-auto  w-100 d-flex align-items-end justify-content-end">
-                    <Nav.Link id="ourImapactNav" href="/donor/impact">YOUR IMPACT</Nav.Link>
+                    <Nav.Link  href="/donor/impact">YOUR IMPACT</Nav.Link>
                     <Nav.Link  href="/donor/blood-donate">NEW BLOOD DONATE</Nav.Link>
+                    <Nav.Link  href="/donor/update">Update</Nav.Link>
                     <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

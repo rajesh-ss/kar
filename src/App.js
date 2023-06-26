@@ -27,6 +27,7 @@ import DonorWrapper from './pages/donor/DonorWrapper';
 import DonorHome from "./pages/donor/home/DonorHome";
 import DonorLogin from './pages/donor/donorLogin/DonorLogin';
 import NewBloodDonate from './pages/donor/NewBloodDonate/NewBloodDonate';
+import DonorUpdate from './pages/donor/DonorUpdate/DonorUpdate';
 
 // ---------------------------------------------------------------------
 //                   BLOODBANK IMPORTS
@@ -42,6 +43,7 @@ import { Stock } from './pages/BloodBank/Stock/Stock';
 import { Terms } from './pages/BloodBank/Stock/Terms';
 import { Requests } from './pages/BloodBank/requests/Requests';
 import {BloodBankUpdate} from './pages/BloodBank/BloodBankUpdate/BloodBankUpdate';
+import EligibleStock from './pages/BloodBank/Stock/EligibleStock';
 
 // ---------------------------------------------------------------------
 //                   HOSPITAL IMPORTS
@@ -61,6 +63,7 @@ import BloodRequest from './pages/Hospital/BloodRequest/BloodRequest';
 import WaitingReceptionistDetails from './pages/Hospital/WaitingReceptionistDetails/WaitingReceptionistDetails';
 import TransplantationUnderProcess from './pages/Hospital/TransplantationUnderProcess/TransplantationUnderProcess';
 import EmergencyService from './pages/Hospital/EmergencyService/EmergencyService';
+
 
 // ---------------------------------------------------------------------
 //                   ADMIN IMPORTS
@@ -111,8 +114,10 @@ const App = () => {
             <Route path="donorHome" element={<DonorHome />} />
             <Route path="impact" element={<Impact />} />
             <Route path='login' element={<DonorLogin />} />
+            <Route path='update' element={<DonorUpdate/>} />
             <Route path='blood-donate' element={<NewBloodDonate/>}/>
             <Route path='*' element={<Navigate to="./404" />} />
+
           </Route>
 
           {/* ---------------------------------------------------
@@ -129,6 +134,7 @@ const App = () => {
             <Route path='terms' element={<Terms />} />
             <Route path='request' element={<Requests />} />
             <Route path='updateDet' element={<BloodBankUpdate/>}/>
+            <Route path='eligible-stock' element={<EligibleStock/>}/>
             <Route path='*' element={<Navigate to="./login" />} />
           </Route>
 
@@ -148,6 +154,7 @@ const App = () => {
             <Route path='waiting-recipent' element={<WaitingReceptionistDetails/>}/>
             <Route path='trans-under-process' element={<TransplantationUnderProcess/>}/>
             <Route path='emergency-service' element={<EmergencyService/>}/>
+            
 
             <Route path='*' element={<Navigate to="./register" />} />
             

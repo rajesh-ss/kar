@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { envs } from '../../../utils/endpoint'
+import './EmergencyService.scss';
 
 
 const baseURL = envs.endpoint;
@@ -111,7 +112,7 @@ const EmergencyService = () => {
         async function callBloodApi() {
             try {
                 await axios
-                    .get(`${baseURL}/hospital/transplantations/${localStorage.getItem('hospital_id')}`)
+                    .get(`${baseURL}/hospital/emergencyservice`)
                     .then((response) => {
                         console.log(response.status)
                         if (response.status === 200) {
@@ -131,10 +132,12 @@ const EmergencyService = () => {
     },[])
 
   return (
-    <div className='container d-flex align-items-center justify-content-center'>
-        <div className='w-75'>
-            <h1>Available Volunteers List</h1>
-            <table className='border border-dark'>
+    
+    <div className='main-Cont'>
+            <h1 
+            style={{color:'#FE472D', fontWeight:'800'}}
+            >Available Volunteers List</h1>
+            <table className=' tabular'>
                 <tr>
                 <th>Blood Group</th>
                 <th>Name</th>
@@ -150,7 +153,7 @@ const EmergencyService = () => {
                         <tr>
                             <td>{`${ele.bloodgroup}`}
                             </td>
-                            <td>{`${ele.name}`}
+                            <td>{`${ele.fname}`}
                             </td>
                             <td>{`${ele.phone}`}
                             </td>
@@ -168,7 +171,7 @@ const EmergencyService = () => {
 
 
             </table>
-        </div>
+     
     </div>  
   )
 }

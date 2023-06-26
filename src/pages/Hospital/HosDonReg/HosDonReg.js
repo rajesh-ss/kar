@@ -6,6 +6,7 @@ import HosDonorReg from '../../../components/HosDonorReg/HosDonorReg';
 import { envs } from '../../../utils/endpoint';
 import axios from 'axios';
 import './HosDonReg.scss'
+import { useNavigate } from 'react-router-dom';
 
 const initialState = {
     "familyPermission": false,
@@ -45,7 +46,7 @@ const baseURL = envs.endpoint;
 export const HosDonReg = () => {
 
     const [donorRegis, setDonorRegis] = useState([initialState]);
-    
+  
 
     useEffect(()=>{
         async function callApi() {
@@ -74,13 +75,16 @@ export const HosDonReg = () => {
     return (
         <Fragment>
       
-            <h3 className='mx-5 my-4 px-5'>DONOR REGISTRY</h3>
+            <h3 className='mx-5 my-4 px-5' style={{
+color:'#fe452d92',
+fontWeight:'1000'
+}}>DONOR REGISTRY</h3>
             <Container className='my-1'>
                 <Row>
                     {
                         donorRegis.map((ele, index)=>{
                             return (
-                                <Col lg={4} md={6} xs={12} className='my-4'>
+                                <Col lg={4} md={6} xs={12} className='my-4' key={index}>
                                 <HosDonorReg
                                     name={ele.fname}
                                     email={ele.email}

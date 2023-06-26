@@ -288,8 +288,9 @@ export const Requests = () => {
             <Tabs
                 defaultActiveKey="WAITING"
                 id="fill-tab-example"
-                className="my-4"
+                className="my-5 taboo"
                 justify
+
             >
                 <Tab eventKey="WAITING" title="WAITING">
                     {/* <Sonnet /> */}
@@ -307,6 +308,7 @@ export const Requests = () => {
                                                 hbgrp={ele.bloodgroup}
                                                 htrans={ele.purpose}
                                                 type={true}
+                                                id={ele._id}
                                             />
 
                                         </Col>
@@ -317,13 +319,13 @@ export const Requests = () => {
                     </Container>
 
                 </Tab>
-                <Tab eventKey="RBC" title="CONFIRMED">
+                <Tab eventKey="CONFIRMED" title="CONFIRMED">
                     <Container className='my-1'>
                         <Row>
                             {
                                 confirmed.map((ele, index) => {
                                     return (
-                                        <Col lg={4} md={6} xs={12} className='my-4'>
+                                        <Col lg={4} md={6} xs={12} className='my-4' key={index}>
                                             <ExceptWaiting
                                                 hname={ele.bloodRequestDetails.hospitalDetails.name}
                                                 hloc={ele.bloodRequestDetails.hospitalDetails.address}
@@ -346,7 +348,7 @@ export const Requests = () => {
                         </Row>
                     </Container>
                 </Tab>
-                <Tab eventKey="PLASMA" title="DELIVERED">
+                <Tab eventKey="DELIVERED" title="DELIVERED">
                     <Container className='my-1'>
                         <Row>
                             {

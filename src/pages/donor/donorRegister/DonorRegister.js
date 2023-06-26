@@ -132,7 +132,12 @@ const DonorRegister = () => {
 
     return (
         <div className={classes['dis-det']}>
-            <h3>DONOR REGISTER</h3>
+            <h3 
+            onClick={()=>{
+                navigate('/home')
+            }}
+            style={{cursor:'pointer'}}
+            >DONOR REGISTER</h3>
             <Form className='border  w-lg-75 w-sm-100 rounded p-3' >
                 <Form.Group className="mb-3" onChange={handleFormData}  controlId="fname" >
                     <Form.Label >First name</Form.Label>

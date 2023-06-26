@@ -1,6 +1,12 @@
 
+.our-impact-card{
+    // border: '1px solid black';
+    min-height: 150px;
+    border-radius: 0;
+ 
+}
 
-.card-custom{
-    width: 10rem;
-    // border: 2px solid black !important;
+.our-impact-card h3{
+    font-size: 35px;
+    word-wrap: break-word;
 }

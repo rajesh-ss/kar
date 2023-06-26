@@ -26,21 +26,25 @@ const  Delivered = (props)=> {
 
 
   return (
-    <Card style={{ width: '100%', margin:"0px 0px 0px 0px" }}>
+    <Card style={{
+       width: '100%',
+        margin:"0px 0px 0px 0px",
+        width: '100%', 
+        height:'700px' }}>
     <Card.Body>
-      <Card.Text>BLOOD BANK NAME : {props.bbName}</Card.Text>
-      <Card.Text>BLOOD BANK LOCATION :{props.bbLoc}</Card.Text>
-      <Card.Text>BLOOD BANK NUMBER : {props.bbNumber}</Card.Text>
-      <Card.Text>COMPONENT: {props.comp}</Card.Text>
-      <Card.Text>BLOOD GROUP : {props.bloodGroup}</Card.Text>
-      <Card.Text>EXPIRY DATE : {props.expiryDate}</Card.Text>
-      <Card.Text>PLATELET COUNT : {props.plateletCount}</Card.Text>
-      <Card.Text>HAEMOGLOBIN LEVEL : {props.haemoglobinLvl}</Card.Text>
-      <Card.Text>RED BLOOD CELL COUNT : {props.rbcCnt}</Card.Text>
-      <Card.Text>REPORT : {props.report}</Card.Text>
-      <Card.Text>TRANSFUSION PURPOSE : {props.trsnplatPurpose}</Card.Text>
-      <Card.Text>PATIENT NAME : {props.PatName}</Card.Text>
-      <Card.Text>PATIENT PHONE No :{props.patPhone}</Card.Text>
+      <Card.Text><span>BLOOD BANK NAME:</span> {props.bbName}</Card.Text>
+      <Card.Text><span>BLOOD BANK LOCATION:</span>{props.bbLoc}</Card.Text>
+      <Card.Text><span>BLOOD BANK NUMBER:</span> {props.bbNumber}</Card.Text>
+      <Card.Text><span>COMPONENT:</span> {props.comp}</Card.Text>
+      <Card.Text><span>BLOOD GROUP:</span> {props.bloodGroup}</Card.Text>
+      <Card.Text><span>EXPIRY DATE:</span> {props.expiryDate}</Card.Text>
+      <Card.Text><span>PLATELET COUNT:</span> {props.plateletCount}</Card.Text>
+      <Card.Text><span>HAEMOGLOBIN LEVEL:</span> {props.haemoglobinLvl}</Card.Text>
+      <Card.Text><span>RED BLOOD CELL COUNT:</span> {props.rbcCnt}</Card.Text>
+      <Card.Text><span>REPORT:</span> {props.report}</Card.Text>
+      <Card.Text><span>TRANSFUSION PURPOSE</span>: {props.trsnplatPurpose}</Card.Text>
+      <Card.Text><span>PATIENT NAME:</span> {props.PatName}</Card.Text>
+      <Card.Text><span>PATIENT PHONE No:</span>{props.patPhone}</Card.Text>
     </Card.Body>
   </Card>
   )

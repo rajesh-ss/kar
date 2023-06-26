@@ -10,7 +10,8 @@ const DonorWrapper = ()=> {
     return (
         <Fragment>
             {
-                location.pathname !== '/donor/login' &&  <DonorTopBar/>
+                location.pathname === '/donor/login' || 
+                location.pathname === '/donor/register'?<></> : <DonorTopBar/>
             }
            
             <Outlet/>

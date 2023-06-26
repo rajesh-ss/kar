@@ -17,6 +17,7 @@ import Waiting from '../../../components/Hospitals/waiting/Waiting';
 import Cancelled from '../../../components/Hospitals/Cancelled/Cancelled';
 import Delivered from '../../../components/Hospitals/Delivered/Delivered';
 import Confirmed from '../../../components/Hospitals/Confirmed/Confirmed';
+import "./HosBloodRequest.scss";
 
 
 
@@ -282,30 +283,24 @@ const HosBloodRequest = () => {
 
     return (
         <Fragment>
-            {/* <div className='d-flex justify-content-center flex-column align-items-center'>
-            <h5 className="my-4" >LAST DONATION DATE: <span style={{color: "red"}}>DD/MM/YYYY</span></h5>
-            <DropdownButton id="dropdown-basic-button" title="New Donation" drop={'end'}>
-                <Dropdown.Item href="#/action-1">BLOOD DONATION</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">ORGAN DONATION</Dropdown.Item>
-            </DropdownButton>
-            </div> */}
-            {/* <h5 className="my-4 mx-5 px-5" >YOUR APPOINTMENTS : </h5> */}
-
-
             <Tabs
                 defaultActiveKey="WAITING"
-                id="fill-tab-example"
-                className="my-4"
+                className="my-4 hosp-tabs"
+                
                 justify
             >
-                <Tab eventKey="WAITING" title="WAITING">
+                <Tab 
+                eventKey="WAITING" 
+                title="WAITING"
+                className='hosp-innertab'
+                >
                     {/* <Sonnet /> */}
                     <Container className='my-1'>
                         <Row>
                             {
                                 waiting.map((ele, index)=>{
                                     return (
-                                        <Col lg={4} md={6} xs={12} className='my-4' key={index}>
+                                        <Col lg={6} md={12} xs={12} className='my-4' key={index}>
                                             <Waiting
                                     Name={ele.fname}
                                     BldGrp={ele.bloodgroup}
@@ -379,7 +374,7 @@ const HosBloodRequest = () => {
                         {
                                 confirmed.map((ele, index)=>{
                                     return (
-                                        <Col lg={4} md={6} xs={12} className='my-4' key={index}>
+                                        <Col lg={6} md={12} xs={12} className='my-4' key={index}>
                                             <Confirmed
                                             bbName = {ele.bloodDonationDetails.bloodbankDetails.name}
                                             bbLoc = {ele.bloodDonationDetails.location}
@@ -394,6 +389,8 @@ const HosBloodRequest = () => {
                                             trsnplatPurpose = {ele.bloodRequestDetails.purpose}
                                             PatName = {ele.bloodRequestDetails.fname}
                                             patPhone = {ele.bloodRequestDetails.phone}
+                                            id={ele.bloodRequestDetails._id}
+                                            
                                     />
                                     </Col> 
                                     )
@@ -453,7 +450,7 @@ const HosBloodRequest = () => {
                         {
                                 delivered.map((ele, index)=>{
                                     return(
-                                    <Col lg={4} md={6} xs={12} className='my-4' key={index}>
+                                    <Col lg={6} md={12} xs={12} className='my-4' key={index}>
                                         <Delivered
                                             bbName = {ele.bloodDonationDetails.bloodbankDetails.name}
                                             bbLoc = {ele.bloodDonationDetails.location}
@@ -481,7 +478,7 @@ const HosBloodRequest = () => {
                             {
                                 cancelled.map((ele, index)=>{
                                     return(
-                                    <Col lg={4} md={6} xs={12} className='my-4' key={index}>
+                                    <Col lg={6} md={12} xs={12} className='my-4' key={index}>
                                         <Cancelled
                                         Name = {ele.fname}
                                         BldGrp= {ele.bloodgroup}

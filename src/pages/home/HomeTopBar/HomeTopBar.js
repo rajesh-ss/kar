@@ -7,38 +7,42 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from "react-router-dom";
 import logo from "../../../assests/icoOrgan.png";
+import './TopBar.scss';
 
 const HomeTopBar = (props) => {
 
     return (
-        <Navbar expand="lg">
+        <Navbar expand="lg" sticky='top' className="header-cont" >
             <Container>
                 <Link to={'home'} style={{ all: 'unset', cursor: 'pointer' }}>
                     <Navbar.Brand >
-                        <img 
+                        <img
                             src={logo}
                             width={'35'}
                             height={'35'}
                             alt="logo img"
-                            style={{margin:"0px 10px"}}/>
-                           Karna
+                            id="basic-nav-dropdown" />
+                        <Link to={'home'}
+                            id="basic-nav-dropdown">
+                            Karna
+                        </Link>
+
                     </Navbar.Brand></Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav " />
                 <Navbar.Collapse id="basic-navbar-nav" className="">
-                    <Nav 
-                    className="me-auto  w-100 d-flex align-items-center justify-content-end">
+                    <Nav
+                        className="w-100 d-flex justify-content-end">
                         <Link to={'home'}
                             style={{ all: 'unset', cursor: 'pointer' }}>
                             <Nav.Link
                                 title="home"
                                 id="basic-nav-dropdown"
-                                className="under-line"
                                 href="home">
                                 HOME
                             </Nav.Link>
 
                         </Link>
-                       
+
                         <Link to={'ourImpact'}
                             style={{ all: 'unset', cursor: 'pointer' }}>
                             <Nav.Link
@@ -52,8 +56,7 @@ const HomeTopBar = (props) => {
                         </Link>
                         <NavDropdown
                             title="KNOW ABOUT"
-                            id="basic-nav-dropdown"
-                            className="under-line">
+                            id="basic-nav-dropdown">
                             <Link
 
                                 to={'knowAbout/organDonation'}

@@ -29,66 +29,66 @@ import { toast } from 'react-toastify';
 
 const baseURL = envs.endpoint;
 
-const Waiting = (props)=> {
+const Waiting = (props) => {
 
-    const [cancelReason, setCancelReason] = useState();
+  const [cancelReason, setCancelReason] = useState();
 
-    const handleCancel = ()=>{  
-      async function callApi() {
-        try {
-            await axios
-                .put(`${baseURL}/hospital/requests/waiting/cancel/${props.id}`,
-                    {
-                        "permanentbanreason": cancelReason,
-                    })
-                .then((response) => {
-                    console.log(response.status)
-                    if (response.status === 200) {
-                        toast.success(`cancelled `, {
-                            toastId: 'blood bank register'
-                        })
+  const handleCancel = () => {
+    async function callApi() {
+      try {
+        await axios
+          .put(`${baseURL}/hospital/requests/waiting/cancel/${props.id}`,
+            {
+              "permanentbanreason": cancelReason,
+            })
+          .then((response) => {
+            console.log(response.status)
+            if (response.status === 200) {
+              toast.success(`cancelled `, {
+                toastId: 'blood bank register'
+              })
 
-                        // props?.callForApiCallRerender();
+              // props?.callForApiCallRerender();
 
-                    }
-                    else {
-                        toast.error(`unable to verify }`, {
-                            toastId: 'blood bank register'
-                        })
-                        throw Error;
-                    }
-                })
-        }
-        catch (e) {
-            console.log(e);
-        }
+            }
+            else {
+              toast.error(`unable to verify }`, {
+                toastId: 'blood bank register'
+              })
+              throw Error;
+            }
+          })
+      }
+      catch (e) {
+        console.log(e);
+      }
     }
     callApi();
-    }
+  }
 
   return (
-    <Card style={{ width: '100%', margin:"0px 0px 0px 0px" }}>
-    <Card.Body>
-      <Card.Text>Name: {props.Name}</Card.Text>
-      <Card.Text>Blood Group: {props.BldGrp}</Card.Text>
-      <Card.Text>Component Required: {props.component}</Card.Text>
-      <Card.Text>Transfusion Purpose: {props.purpose}</Card.Text>
-      <Card.Text>Email: {props.email}</Card.Text>
-      <Card.Text>Age: {props.age}</Card.Text>
-      <Card.Text>Phone No: {props.ph}</Card.Text>
-      <Card.Text>Address: {props.address}</Card.Text>
-      <Card.Text>Gender: {props.sex}</Card.Text>
-      <Card.Text>Date Of Birth: {props.dob}</Card.Text>
-      <Card.Text>Reason For Cancellation: {props.cal}</Card.Text>
-  
-        <Form>
-      <Form.Control as="textarea" rows={3} onChange={(e)=> setCancelReason(e.target.value)}>{cancelReason}</Form.Control>
-      <Button variant="danger" className='mx-2 my-2' onClick={handleCancel}>cancel</Button><br/>
-      {/* <Button variant="danger" className='mx-2 my-2'>COMPLETE</Button> */}
-      </Form>
+    <Card style={{ width: '100%', margin: "0px 0px 0px 0px",  height:'700px'  }}>
+      <Card.Body>
+        <Card.Text><span>Name:</span> {props.Name}</Card.Text>
+        <Card.Text><span>Blood Group:</span> {props.BldGrp}</Card.Text>
+        <Card.Text><span>Component Required:</span> {props.component}</Card.Text>
+        <Card.Text><span>Transfusion Purpose:</span> {props.purpose}</Card.Text>
+        <Card.Text><span>Email:</span> {props.email}</Card.Text>
+        <Card.Text><span>Age:</span> {props.age}</Card.Text>
+        <Card.Text><span>Phone No:</span> {props.ph}</Card.Text>
+        <Card.Text><span>Address:</span> {props.address}</Card.Text>
+        <Card.Text><span>Gender:</span> {props.sex}</Card.Text>
+        <Card.Text><span>Date Of Birth:</span> {props.dob}</Card.Text>
+        <Card.Text><span>Reason For Cancellation:</span> {props.cal}</Card.Text>
 
-    </Card.Body>
-  </Card>
+        <Form>
+          <Form.Control as="textarea" rows={3} onChange={(e) => setCancelReason(e.target.value)}>{cancelReason}</Form.Control>
+          <Button variant="danger" className='mx-2 my-2' onClick={handleCancel}>cancel</Button><br />
+          {/* <Button variant="danger" className='mx-2 my-2'>COMPLETE</Button> */}
+        </Form>
+
+      </Card.Body>
+    </Card>
   )
 
 }

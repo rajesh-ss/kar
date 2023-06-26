@@ -81,7 +81,11 @@ export const HospitalRegister = ()=> {
   return (
     <Fragment>
          <div className={classes['dis-det']}>
-            <h3>HOSPITAL DETAILS</h3>
+            <h3 onClick={()=>{
+                navigate('/home')
+            }}
+            style={{cursor:'pointer'}}
+            >HOSPITAL DETAILS</h3>
             <Form className='border  w-lg-75 w-sm-100 rounded p-3 w-75'>
 
                 <Form.Group className="mb-3" controlId="name">

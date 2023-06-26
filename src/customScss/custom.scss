@@ -3,7 +3,8 @@
 
 
 .nav{
-    background-color: #00000020;;
+    background-color: #00000020;
+    position: relative;
 }
 
 .nav-item button{
@@ -17,6 +18,7 @@
     color: rgb(96, 8, 185);
 }
 
+
 .navbar-nav{
 
     .nav-link{
@@ -25,10 +27,33 @@
     }
 
     .nav-link:hover{
-        box-shadow:  0px 0px 10px #2322220e;
+        // box-shadow:  0px 0px 10px #2322220e;
 
     }    
 }
 
+.card-text span{
+    font-size: 20px;
+    font-weight: 1000;
+    color: #FE472D;
+}
 
+.addShow{
+    // border: 1px solid black;
+    box-shadow: 1px 1px 5px #00000020;
+    padding: 10px 15px;
+}
+
+.addShow input {
+    // // border: 1px solid black;
+    box-shadow: 0px 0px 5px #fe452d62;
+    // padding: 10px 15px;
+    // border: none;
+}
+
+.addShow .form-control{
+    box-shadow: 0px 0px 5px #fe452d62;
+
+    
+}
 

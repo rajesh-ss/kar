@@ -64,13 +64,17 @@ const HospitalLogin = (props) => {
         navigate('hospital/register')
     }   
 
+    const handleGoingHome = () =>{
+        navigate('/home')
+
+    }
 
     return (
         <Fragment>
             <div className={`row ${classes['outer-container']}`}>
                 <div className={`col-lg ${classes['left-container']}`}>
                     <div className={` ${classes['form-cont']}`}>
-                        <div className={`my-3 ${classes['form-heading']}`}>
+                        <div className={`my-3 ${classes['form-heading']}`} onClick={handleGoingHome}>
                             KARNA
                         </div>
 

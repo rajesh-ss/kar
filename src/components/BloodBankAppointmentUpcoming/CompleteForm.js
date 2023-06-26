@@ -109,7 +109,7 @@ export const CompleteForm = (props) => {
         }
         callApi();
 
-        window.location.reload(false);
+        // window.location.reload(false);
     }
 
 
@@ -430,7 +430,7 @@ export const CompleteForm = (props) => {
                     {
                       showOk ? <>
                     <button className='btn btn-success rounded' onClick={()=>{
-
+                        window.location.reload(false);
                     }}>Ok</button>
                       
                       </> : <> <p>Name: {rfidDataInsert.donorDetails.fname}</p>

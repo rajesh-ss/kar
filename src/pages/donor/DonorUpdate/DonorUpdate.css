@@ -1,0 +1,128 @@
+.dis-det{
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    border: 1px solid black;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 5%;
+
+}
+
+.dis-det h3{
+    text-align: center;
+    font-weight: bolder;
+    /* width: 20%; */
+    padding: 10px;
+    border-radius: 0px;
+    margin: 25px 0px;
+    border-bottom: 1px solid rgba(118, 112, 112, 0.525);
+    padding-bottom: 10px;
+}
+
+
+.outer-container{
+    /* border: 0px solid black; */
+    /* width: 100%; */
+    height: 100vh;
+  
+}
+
+
+.left-container{
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-container{
+ background:url('../../../assests/organ.png');
+ background-repeat: no-repeat;
+ background-size: cover;
+
+}
+
+.form-cont{
+    /* border: 1px solid black; */
+    background-color: #fff;
+    box-shadow: 1px 1px 5px #4b4a4a56;
+    width: 75%;
+    height: 75%;
+}
+
+.form-heading{
+    text-align: center;
+    font-size: 25px;
+    background-color: #fff;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.login-type{
+    font-weight: bold;
+    font-size: large;
+    font-family: 'Roboto Mono', monospace;
+    width: 40%;
+    border-bottom: 1px solid #3f3d3d44;
+    text-align: center;
+}
+
+.form-sty{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+
+}
+
+.form-sty input{
+    box-shadow: 1px 1px 5px #4b4a4a92;
+    border: none;
+    height: 40px;
+    width: 60%;
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+}
+
+.form-sty input:focus{
+    border: none;
+    outline: none;
+    box-shadow:  1px 1px 10px #747070c7;
+}
+
+.form-sty label{
+    /* border: 1px solid black; */
+    width: 60%;
+    font-family: 'Roboto Mono', monospace;
+
+}
+
+.form-sty button{
+    border-radius: 3px;
+    background-color: #fff;
+    border: 1px solid #74707045;
+    padding: 7px 20px;
+    box-shadow:  1px 1px 5px #74707045;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.form-sty button:hover{
+    box-shadow: inset 1px 1px 20px #27316a45;
+}
+
+
+@media (max-width: 768px) { 
+
+    .left-container{
+        width: 100%;
+    }
+    .form-cont{
+        width: 85%;
+        height: 85%;
+   
+    }
+  }

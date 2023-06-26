@@ -25,19 +25,20 @@ import Button from 'react-bootstrap/Button';
 const Cancelled = (props)=> {
 
   return (
-    <Card style={{ width: '100%', margin:"0px 0px 0px 0px" }}>
+    <Card style={{ width: '100%', margin:"0px 0px 0px 0px",   height:'600px'  }}>
+      
     <Card.Body>
-      <Card.Text>Name : {props.Name}</Card.Text>
-      <Card.Text>Blood Group : {props.BldGrp}</Card.Text>
-      <Card.Text>Component : {props.component}</Card.Text>
-      <Card.Text>Transfusion Purpose : {props.purpose}</Card.Text>
-      <Card.Text>Email : {props.email}</Card.Text>
-      <Card.Text>Age : {props.age}</Card.Text>
-      <Card.Text>Phone : {props.ph}</Card.Text>
-      <Card.Text>Address : {props.address}</Card.Text>
-      <Card.Text>Gender : {props.sex}</Card.Text>
-      <Card.Text>Date Of Birth : {props.dob}</Card.Text>
-      <Card.Text>Reason For Cancellation : {props.cal}</Card.Text>
+      <Card.Text><span>Name : </span>{props.Name}</Card.Text>
+      <Card.Text><span>Blood Group :</span> {props.BldGrp}</Card.Text>
+      <Card.Text><span>Component :</span> {props.component}</Card.Text>
+      <Card.Text><span>Transfusion Purpose :</span> {props.purpose}</Card.Text>
+      <Card.Text><span>Email :</span> {props.email}</Card.Text>
+      <Card.Text><span>Age :</span> {props.age}</Card.Text>
+      <Card.Text><span>Phone :</span> {props.ph}</Card.Text>
+      <Card.Text><span>Address :</span> {props.address}</Card.Text>
+      <Card.Text><span>Gender :</span> {props.sex}</Card.Text>
+      <Card.Text><span>Date Of Birth :</span> {props.dob}</Card.Text>
+      <Card.Text><span>Reason For Cancellation :</span> {props.cal}</Card.Text>
     </Card.Body>
   </Card>
   )

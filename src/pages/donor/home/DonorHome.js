@@ -237,10 +237,16 @@ const DonorHome = () => {
                 <p style={{color:'red'}}>Your Blood Sample Has Tested Positive For HIV. Contact Blood Bank For Further Details.</p>
                 </div>
             }
-            <DropdownButton id="dropdown-basic-button" title="New Donation" drop={'end'}>
+            <button type='button' 
+            className='btn btn-primary px-5 py-2' 
+            style={{fontSize:'20px', fontWeight:'900'}}
+            onClick={()=>{
+                navigate('/donor/blood-donate')
+            }}>New Donation</button>
+            {/* <DropdownButton id="dropdown-basic-button" title="New Donation" drop={'end'}>
                 <Dropdown.Item href='/donor/blood-donate'>BLOOD DONATION</Dropdown.Item>
                 <Dropdown.Item >ORGAN DONATION</Dropdown.Item>
-            </DropdownButton>
+            </DropdownButton> */}
             </div>
 
             <Tabs

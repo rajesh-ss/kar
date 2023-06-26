@@ -65,7 +65,6 @@ export const Stock = () => {
     const [twoOverLay, setTwoOverLay] = useState(false);
     const [detailsOfPacket, setDetailsOfPacket] = useState({});
 
-
     const newBloodPacketHandler = (event) => {
         setNewBloodDis((prev) => !prev)
     }
@@ -92,6 +91,7 @@ export const Stock = () => {
                             setStockWhole(response.data)
                         }
                         else {
+                            // setStockWhole(response.data)
                             toast.error(`unable to verify }`, {
                                 toastId: 'blood bank register'
                             })
@@ -216,39 +216,56 @@ const rfidGet = ()=>{
                 .then((response) => {
                     console.log(response.status)
                     if (response.status === 200) {
-                        // toast.success(`Succesfully `, {
-                        //     toastId: 'blood bank register'
-                        // })
-                        console.log(response.data['donorDetails'])
-                        setDetailsOfPacket(response.data['donorDetails'])
+                        toast.success(`Succesfully`, {
+                            toastId: 'blood bank register'
+                        })
+                        console.log(response.data)
+                        setTwoOverLay(true)
+                        setOneOverLay(true)
+                        setDetailsOfPacket(response.data)
+                        localStorage.setItem('stock_details_id', response.data._id)
                     }
                     else {
-                        toast.error(`something went wrong`, {
+                        // setOneOverLay(true)
+                        
+                        toast.error(response.data, {
                             toastId: 'blood bank register'
                         })
                         throw Error;
                     }
                 })
         }
-        catch (e) {
+        catch (e) {  
+            // setOneOverLay(true)
+
             console.log(e);
+            
         }
     }
     callApi();
 }
 
-    console.log(stockWhole)
+    console.log(detailsOfPacket)
     return (
         <Fragment>
             { oneOverLay ? twoOverLay?<>
                 <div className='card_insert'>
                 <div className='box'>
-                    <div className='header'>
-                    <h4>Details of the Packet</h4>
+                    <div className='header p-3'>
                     <span onClick={handleCloseX}>X</span>
                     </div>
-                    <div className='img-dis'>
-                    <img src={correct} alt='correct ico' height={60} width={60}/>
+                    <div className='img-dis mx-4 px-5'>
+                    <h4 className='my-2'>Details of the Packet</h4>
+                    <img src={correct} alt='correct ico' height={80} width={80}/>
+                    <div className='my-2 p-3'>
+                    <p>Donor Name: {detailsOfPacket.donorDetails.fname}</p>
+                    <p>Phone No: {detailsOfPacket.donorDetails.phone}</p>
+                    <p>Blood Group: {detailsOfPacket.donorDetails.bloodgroup}</p>
+                    <p>Appointment Date: {detailsOfPacket.appdate.slice(0, 10)}</p>
+                    <p>Time: {detailsOfPacket.time}</p>
+                    <p>Sex: {detailsOfPacket.donorDetails.sex}</p>
+                    <p>Age: {detailsOfPacket.donorDetails.age}</p>
+                    </div>
                     {
                     <>
                     <button className='btn btn-success rounded' onClick={()=>{
@@ -270,14 +287,15 @@ const rfidGet = ()=>{
                 <div className='card_insert'>
                 <div className='box'>
                     <div className='header'>
-                    <h4>PUT RFID TAG NEAR THE READER</h4>
+                    
                     <span onClick={handleCloseX}>X</span>
                     </div>
-                    <div className='img-dis'>
-                    <img src={correct} alt='correct ico' height={60} width={60}/>
+                    <div className='img-dis mx-5 my-3'>
+                    <h4 className='mt-3'>PUT RFID TAG NEAR THE READER</h4>
+                    <img src={correct} alt='correct ico' height={60} width={60} className='mt-4'/>
                     {
                     <>
-                    <button className='btn btn-success rounded' onClick={rfidGet}>Read Data</button>
+                    <button className='btn btn-success rounded mt-5' onClick={rfidGet}>Read Data</button>
                       
                     </> 
                      
@@ -314,37 +332,39 @@ const rfidGet = ()=>{
             }
             <div className='mx-5 p-2'>
                 <h5 className="my-4 mx-5 " >ARRIVAL OF A NEW BLOOD PACKET: </h5>
-
-                <Button variant='warning mx-5 mb-4' onClick={newBloodPacketHandler}>
+                {/* // onClick={newBloodPacketHandler}> */}
+                <Button variant='warning mx-5 mb-4'  onClick={handleProceed}>
+                
                     NEW BLOOD PACKET
                 </Button>
                 {
-                    newBloodDis && <Container className='border border-dark p-4'>
-                        <Row>
-                            <Col xs={12} md={6}>
-                                <p>
-                                    PUT RFID TAG NEAR THE READER
-                                </p>
-                            </Col>
-                            <Col xs={12} md={6}>
-                                <h5>DETAILS OF THE PACKET ARE:</h5>
-                                <p>
-                                    DONOR NAME: Chirag V
-                                    PHONE NO: 8861787239
-                                    BLOOD GROUP: O+
-                                    APPOINTMENT DATE: 23/05/2023
-                                    TIME: 9:00 A.M
-                                    SEX: Male
-                                    AGE: 21
-                                </p>
-                                <Button variant='warning mx-0 my-1' onClick={handleProceed}>
-                                    Proceed
-                                </Button>
 
-                            </Col>
-                        </Row>
+                    // newBloodDis && <Container className='border border-dark p-4'>
+                    //     <Row>
+                    //         <Col xs={12} md={6}>
+                    //             <p>
+                    //                 PUT RFID TAG NEAR THE READER
+                    //             </p>
+                    //         </Col>
+                    //         <Col xs={12} md={6}>
+                    //             <h5>DETAILS OF THE PACKET ARE:</h5>
+                    //             <p>
+                    //                 DONOR NAME: Chirag V
+                    //                 PHONE NO: 8861787239
+                    //                 BLOOD GROUP: O+
+                    //                 APPOINTMENT DATE: 23/05/2023
+                    //                 TIME: 9:00 A.M
+                    //                 SEX: Male
+                    //                 AGE: 21
+                    //             </p>
+                    //             <Button variant='warning mx-0 my-1' onClick={handleProceed}>
+                    //                 Proceed
+                    //             </Button>
 
-                    </Container>
+                    //         </Col>
+                    //     </Row>
+
+                    // </Container>
                 }
             </div>
 

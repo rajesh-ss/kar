@@ -88,19 +88,19 @@ const HosDonorReg = (props)=> {
                 </div>
             }
    
-    <Card style={{ width: '100%', margin:"0px 0px 0px 0px" }}>
+    <Card style={{ width: '100%', margin:"0px 0px 0px 0px", height:'650px' }}>
     <Card.Body>
-      <Card.Text>NAME : {props.name}</Card.Text>
-      <Card.Text>EMAIL : {props.email}</Card.Text>
-      <Card.Text>DATE OF BIRTH : {props.dob}</Card.Text>
-      <Card.Text>AGE  : {props.age}</Card.Text>
-      <Card.Text>PHONE No : {props.ph}</Card.Text>
-      <Card.Text>SEX : {props.sex}</Card.Text>
-      <Card.Text>BLOOD GROUP : {props.bg}</Card.Text>
-      <Card.Text>ADDRESS : {props.addr}</Card.Text>
-      <Card.Text>EMERGENCY CONTACT NAME :{props.emcnam}</Card.Text>
-      <Card.Text>EMERGENCY CONTACT PHONE No :{props.emcph}</Card.Text>
-      <Card.Text>AADHAR ID :{props.adh}</Card.Text>
+      <Card.Text><span>NAME :</span> {props.name}</Card.Text>
+      <Card.Text><span>EMAIL :</span> {props.email}</Card.Text>
+      <Card.Text><span>DATE OF BIRTH :</span> {props.dob}</Card.Text>
+      <Card.Text><span>AGE  :</span> {props.age}</Card.Text>
+      <Card.Text><span>PHONE No :</span> {props.ph}</Card.Text>
+      <Card.Text><span>SEX :</span> {props.sex}</Card.Text>
+      <Card.Text><span>BLOOD GROUP :</span> {props.bg}</Card.Text>
+      <Card.Text><span>ADDRESS :</span> {props.addr}</Card.Text>
+      <Card.Text><span>EMERGENCY CONTACT NAME :</span>{props.emcnam}</Card.Text>
+      <Card.Text><span>EMERGENCY CONTACT PHONE No :</span>{props.emcph}</Card.Text>
+      <Card.Text><span>AADHAR ID :</span>{props.adh}</Card.Text>
       {/* <h1>asdf</h1> */}
 
       <Button variant="danger" onClick={(e)=>setDisplayCard(true)}>Confirm Death</Button>

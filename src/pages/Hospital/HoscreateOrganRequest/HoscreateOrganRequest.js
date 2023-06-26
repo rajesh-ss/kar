@@ -119,23 +119,44 @@ const  HoscreateOrganRequest = ()=> {
   return (
     <div className='my-4  d-flex justify-content-center'> 
 
-    <Form className='border w-75 w-sm-100 rounded p-3' >
-    <h3 className='mb-5 text-center'>Create Organ Request</h3>  
+    <Form className='w-75 w-sm-100 rounded p-3' >
+    <h3 
+    className='mb-5 text-center'
+    style={{
+        color:'#fe452d92',
+        fontWeight:'1000',
+        fontSize:'35px'
+
+    }}
+    >Create Organ Request</h3>  
    
                 
 
-              <Form.Group className="my-4" onChange={handleFormData}  controlId="name" >
-                <Form.Label >Name</Form.Label>
+              <Form.Group className="my-4 addShow" onChange={handleFormData}  controlId="name" >
+                <Form.Label
+                    style={{
+                        color:'#fe452d92',
+                        fontWeight:'1000',
+                    }}
+                >Name</Form.Label>
                 <Form.Control type="text" placeholder="Enter you name" name='name' />
             </Form.Group>
 
-            <Form.Group className="my-4" controlId="phone" onChange={handleFormData} >
-                <Form.Label>Phone</Form.Label>
+            <Form.Group className="my-4 addShow" controlId="phone" onChange={handleFormData} >
+                <Form.Label
+                              style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}>Phone</Form.Label>
                 <Form.Control type="numyer" placeholder="Phone" name='phone' />
             </Form.Group>
 
-            <Form.Group className="my-4" onChange={handleFormData}  name='sex' >
-                <Form.Label>sex</Form.Label>
+            <Form.Group className="my-4 addShow" onChange={handleFormData}  name='Sex' >
+                <Form.Label
+                              style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}>sex</Form.Label>
                 <div className="my-3" >
                     <Form.Check
                         label="male"
@@ -156,14 +177,23 @@ const  HoscreateOrganRequest = ()=> {
 
             </Form.Group>
 
-            <Form.Group className="my-4" controlId="DOB" onChange={handleFormData}  >
-                <Form.Label>Date of birth</Form.Label>
+            <Form.Group className="my-4 addShow" controlId="DOB" onChange={handleFormData}  >
+                <Form.Label
+                              style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}>Date of birth</Form.Label>
                 <Form.Control type="date" placeholder="Date of birth" name='DOB' />
             </Form.Group>
 
 
-            <Form.Group className="my-4" onChange={handleFormData}  name='bloodgroup'>
-              <Form.Label>Blood Type Required </Form.Label>
+            <Form.Group className="my-4 addShow" onChange={handleFormData}  name='Bloodgroup'>
+              <Form.Label
+                            style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}
+              >Blood Type Required </Form.Label>
                 <div className="my-3">
                     <Form.Check
                         inline
@@ -236,8 +266,13 @@ const  HoscreateOrganRequest = ()=> {
                 </div>
              </Form.Group>
 
-             <Form.Group className="my-4" onChange={handleFormData}  name='diabetes' >
-                <Form.Label>diabetes</Form.Label>
+             <Form.Group className="my-4 addShow" onChange={handleFormData}  name='Diabetes' >
+                <Form.Label
+                              style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}
+                >diabetes</Form.Label>
                 <div className="my-3" >
                     <Form.Check
                         label="true"
@@ -257,8 +292,13 @@ const  HoscreateOrganRequest = ()=> {
               </Form.Group>
 
 
-            <Form.Group className="my-4" onChange={handleFormData}  name='priororgantransplant' >
-                <Form.Label>priororgantransplant</Form.Label>
+            <Form.Group className="my-4 addShow" onChange={handleFormData}  name='priororgantransplant' >
+                <Form.Label
+                              style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}
+                >priororgantransplant</Form.Label>
                 <div className="my-3" >
                     <Form.Check
                         label="true"
@@ -278,14 +318,24 @@ const  HoscreateOrganRequest = ()=> {
                  </Form.Group>
 
 
-            <Form.Group className="my-4" controlId="DOB" onChange={handleFormData}  >
-                <Form.Label>dialysis Date</Form.Label>
+            <Form.Group className="my-4 addShow" controlId="DOB" onChange={handleFormData}  >
+                <Form.Label
+                
+                style={{
+                    color:'#fe452d92',
+                    fontWeight:'1000',
+                }}>dialysis Date</Form.Label>
                 <Form.Control type="date" placeholder="Dialysis Date" name='dialysisDate' />
             </Form.Group>
 
 
-            <Form.Group className="my-4" onChange={handleFormData}  name='kidneydisease'>
-              <Form.Label>KIDNEY DISEASE </Form.Label>
+            <Form.Group className="my-4 addShow" onChange={handleFormData}  name='kidneydisease'>
+              <Form.Label
+                            style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}
+              >KIDNEY DISEASE </Form.Label>
                 <div className="my-3">
                     <Form.Check
                         inline
@@ -326,8 +376,13 @@ const  HoscreateOrganRequest = ()=> {
                 </div>
              </Form.Group>
 
-             <Form.Group className="my-4" onChange={handleFormData}  name='hlatype'>
-              <Form.Label>HUMAN LEUKOCYTE ANTIGEN(HLA) TYPE </Form.Label>
+             <Form.Group className="my-4 addShow" onChange={handleFormData}  name='hlatype'>
+              <Form.Label
+                            style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}
+              >HUMAN LEUKOCYTE ANTIGEN(HLA) TYPE </Form.Label>
                 <div className="my-3">
                     <Form.Check
                         inline
@@ -385,8 +440,13 @@ const  HoscreateOrganRequest = ()=> {
              </Form.Group>
 
 
-             <Form.Group className="my-4" onChange={handleFormData}  name='hlatypingmethod'>
-              <Form.Label>HLA TYPING METHOD </Form.Label>
+             <Form.Group className="my-4 addShow" onChange={handleFormData}  name='hlatypingmethod'>
+              <Form.Label
+                            style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}
+              >HLA TYPING METHOD </Form.Label>
                 <div className="my-3">
                     <Form.Check
                         inline
@@ -425,14 +485,24 @@ const  HoscreateOrganRequest = ()=> {
                 </div>
              </Form.Group>
 
-             <Form.Group className="my-4" onChange={handleFormData}  controlId="pralevel" >
-                <Form.Label >PANEL REACTIVE ANTIBODY LEVEL(%)</Form.Label>
+             <Form.Group className="my-4 addShow" onChange={handleFormData}  controlId="pralevel" >
+                <Form.Label 
+                              style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}
+                >PANEL REACTIVE ANTIBODY LEVEL(%)</Form.Label>
                 <Form.Control type="numyer" placeholder="pralevel" name='pralevel' />
             </Form.Group>
 
 
-            <Form.Group className="my-4" onChange={handleFormData}  name='hlaantigen'>
-              <Form.Label>HLA ANTIGEN AGAINST WHICH ANTIBODIES ARE PRESENT </Form.Label>
+            <Form.Group className="my-4 addShow" onChange={handleFormData}  name='hlaantigen'>
+              <Form.Label
+                            style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}
+              >HLA ANTIGEN AGAINST WHICH ANTIBODIES ARE PRESENT </Form.Label>
                 <div className="my-3">
                     <Form.Check
                         inline
@@ -491,8 +561,13 @@ const  HoscreateOrganRequest = ()=> {
 
 
 
-             <Form.Group className="my-4" onChange={handleFormData}  name='pramethod'>
-              <Form.Label>HLA TYPING METHOD </Form.Label>
+             <Form.Group className="my-4 addShow" onChange={handleFormData}  name='pramethod'>
+              <Form.Label
+                            style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}
+              >HLA TYPING METHOD </Form.Label>
                 <div className="my-3">
                     <Form.Check
                         inline
@@ -523,8 +598,13 @@ const  HoscreateOrganRequest = ()=> {
              </Form.Group>
 
 
-             <Form.Group className="my-4" onChange={handleFormData}  name='sensitizationreason'>
-              <Form.Label>SENSITIZATION REASON </Form.Label>
+             <Form.Group className="my-4 addShow" onChange={handleFormData}  name='sensitizationreason'>
+              <Form.Label
+                            style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}
+              >SENSITIZATION REASON </Form.Label>
                 <div className="my-3">
                     <Form.Check
                         inline
@@ -563,24 +643,48 @@ const  HoscreateOrganRequest = ()=> {
              </Form.Group>
 
 
-             <Form.Group className="my-4" controlId="height" onChange={handleFormData}>
-                <Form.Label>HEIGHT(in cm)</Form.Label>
+             <Form.Group className="my-4 addShow" controlId="height" onChange={handleFormData}>
+                <Form.Label
+                              style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}
+                >HEIGHT(in cm)</Form.Label>
                 <Form.Control type="number" placeholder="height" name='height' />
             </Form.Group>
 
-            <Form.Group className="my-4" controlId="weight" onChange={handleFormData}>
-                <Form.Label>WEIGHT(in kg)</Form.Label>
+            <Form.Group className="my-4 addShow" controlId="weight" onChange={handleFormData}>
+                <Form.Label
+                              style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}
+                >WEIGHT(in kg)</Form.Label>
                 <Form.Control type="number" placeholder="weight" name='weight' />
             </Form.Group>
 
-            <Form.Group className="my-4" onChange={handleFormData} controlId="surgicalevaluationremarks">
-                <Form.Label>SURGICAL EVALUATION REMARKS</Form.Label>
+            <Form.Group className="my-4 addShow" onChange={handleFormData} controlId="surgicalevaluationremarks">
+                <Form.Label
+                              style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}
+                >SURGICAL EVALUATION REMARKS</Form.Label>
                 <Form.Control as="textarea" type="textarea" placeholder="surgical evaluation remarks" name='surgicalevaluationremarks' />
             </Form.Group>
 
-            <Form.Group className="my-4" onChange={handleFormData} controlId="otherdetails">
-                <Form.Label>OTHER DETAILS</Form.Label>
-                <Form.Control as="textarea" type="textarea" placeholder="otherdetails" name='otherdetails' />
+            <Form.Group className="my-4 addShow" onChange={handleFormData} controlId="otherdetails">
+                <Form.Label
+                              style={{
+                                color:'#fe452d92',
+                                fontWeight:'1000',
+                            }}
+                >OTHER DETAILS</Form.Label>
+                <Form.Control
+                 as="textarea"
+                  type="textarea"
+                   placeholder="otherdetails" 
+                   name='otherdetails' />
             </Form.Group>
 
      
@@ -588,7 +692,11 @@ const  HoscreateOrganRequest = ()=> {
 
 
           
-            <Button variant="primary" type="button" onClick={handleSubmit}>
+            <Button variant="primary"
+                          style={{
+                            fontWeight:'1000',
+                        }}
+            type="button" onClick={handleSubmit}>
                 Submit
             </Button>
         </Form>

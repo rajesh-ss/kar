@@ -106,10 +106,24 @@ const BloodRequest = () =>{
   return (
     <div className='my-4  d-flex justify-content-center'> 
 
-        <Form className='border w-75 w-sm-100 rounded p-3' >
-        <h3 className='mb-5 text-center'>Create Blood Request</h3>  
-        <Form.Group className="my-3" onChange={handleFormData}  name='bloodgroup'>
-                    <Form.Label>Blood Type Required: </Form.Label>
+        <Form className='w-75 w-sm-100 rounded p-3' >
+        <h3 className='mb-5 text-center'
+                      style={{
+                        color:'#fe452d92',
+                        fontWeight:'1000',
+                        fontSize:'35px'
+                    }}
+        >Create Blood Request</h3>  
+        <Form.Group 
+        className="my-3 addShow" 
+        onChange={handleFormData}  
+        name='bloodgroup'>
+                    <Form.Label
+                                  style={{
+                                    color:'#fe452d92',
+                                    fontWeight:'1000',
+                                }}
+                    >Blood Type Required: </Form.Label>
 
                     <div className="my-4">
                         <Form.Check
@@ -185,8 +199,13 @@ const BloodRequest = () =>{
 
                  </Form.Group>
 
-                 <Form.Group className="my-4" onChange={handleFormData}  name='component'>
-                    <Form.Label>Component Required: </Form.Label>
+                 <Form.Group className="my-4 addShow" onChange={handleFormData}  name='component'>
+                    <Form.Label
+                                  style={{
+                                    color:'#fe452d92',
+                                    fontWeight:'1000',
+                                }}
+                    >Component Required: </Form.Label>
 
                     <div className="my-3">
                         <Form.Check
@@ -229,27 +248,53 @@ const BloodRequest = () =>{
 
                  </Form.Group>
                 
-                 <Form.Group className="my-4" onChange={handleFormData}  controlId="purpose" >
-                    <Form.Label >Reason</Form.Label>
+                 <Form.Group className="my-4 addShow" onChange={handleFormData}  controlId="purpose" >
+                    <Form.Label 
+                                  style={{
+                                    color:'#fe452d92',
+                                    fontWeight:'1000',
+                                }}
+                    >Reason</Form.Label>
                     <Form.Control type="text" placeholder="Reason For blood request" name='purpose' />
                 </Form.Group>
 
-                <Form.Group className="my-4" onChange={handleFormData}  controlId="fname" >
-                    <Form.Label >First name</Form.Label>
+                <Form.Group className="my-4 addShow" onChange={handleFormData}  controlId="fname" >
+                    <Form.Label 
+                                  style={{
+                                    color:'#fe452d92',
+                                    fontWeight:'1000',
+                                }}
+                    >First name</Form.Label>
                     <Form.Control type="text" placeholder="Enter you name" name='fname' />
                 </Form.Group>
 
-                <Form.Group className="my-4"  onChange={handleFormData} controlId='mname'>
-                    <Form.Label>Middle name</Form.Label>
+                <Form.Group className="my-4 addShow"  onChange={handleFormData} controlId='mname'>
+                    <Form.Label
+                                  style={{
+                                    color:'#fe452d92',
+                                    fontWeight:'1000',
+                                }}
+                    >Middle name</Form.Label>
                     <Form.Control type="text" placeholder="middle name" name='mname'/>
                 </Form.Group>
 
-                <Form.Group className="my-4" controlId="lname" onChange={handleFormData} >
-                    <Form.Label>Last name</Form.Label>
+                <Form.Group className="my-4 addShow" controlId="lname" onChange={handleFormData} >
+                    <Form.Label
+                                  style={{
+                                    color:'#fe452d92',
+                                    fontWeight:'1000',
+                                }}
+                    >Last name</Form.Label>
                     <Form.Control type="text" placeholder="last name" name='lname' />
                 </Form.Group>
-                <Form.Group className="my-4" onChange={handleFormData}  name='sex' >
-                    <Form.Label>sex</Form.Label>
+
+                <Form.Group className="my-4 addShow" onChange={handleFormData}  name='sex' >
+                    <Form.Label
+                                  style={{
+                                    color:'#fe452d92',
+                                    fontWeight:'1000',
+                                }}
+                    >sex</Form.Label>
                     <div className="my-4" >
                         <Form.Check
                             label="male"
@@ -270,31 +315,56 @@ const BloodRequest = () =>{
 
                 </Form.Group>
 
-                <Form.Group className="my-4" controlId="DOB" onChange={handleFormData}  >
-                    <Form.Label>Date of birth</Form.Label>
+                <Form.Group className="my-4 addShow" controlId="DOB" onChange={handleFormData}  >
+                    <Form.Label
+                                  style={{
+                                    color:'#fe452d92',
+                                    fontWeight:'1000',
+                                }}
+                    >Date of birth</Form.Label>
                     <Form.Control type="date" placeholder="Date of birth" name='DOB' />
                 </Form.Group>
 
-                <Form.Group className="my-4" controlId="age" onChange={handleFormData}>
-                    <Form.Label>Age</Form.Label>
+                <Form.Group className="my-4 addShow" controlId="age" onChange={handleFormData}>
+                    <Form.Label
+                                  style={{
+                                    color:'#fe452d92',
+                                    fontWeight:'1000',
+                                }}
+                    >Age</Form.Label>
                     <Form.Control type="number" placeholder="Age" name='age' />
                 </Form.Group>
 
 
-                <Form.Group className="my-4" controlId="phone" onChange={handleFormData} >
-                    <Form.Label>Phone</Form.Label>
+                <Form.Group className="my-4 addShow" controlId="phone" onChange={handleFormData} >
+                    <Form.Label
+                                  style={{
+                                    color:'#fe452d92',
+                                    fontWeight:'1000',
+                                }}
+                    >Phone</Form.Label>
                     <Form.Control type="number" placeholder="Phone" name='phone' />
                 </Form.Group>
 
         
-                <Form.Group className="my-4" controlId="email" onChange={handleFormData} >
-                    <Form.Label>Email</Form.Label>
+                <Form.Group className="my-4 addShow" controlId="email" onChange={handleFormData} >
+                    <Form.Label
+                                  style={{
+                                    color:'#fe452d92',
+                                    fontWeight:'1000',
+                                }}
+                    >Email</Form.Label>
                     <Form.Control type="email" placeholder="email" name='email' />
                 </Form.Group>
 
 
-                <Form.Group className="my-4" onChange={handleFormData} controlId="address">
-                    <Form.Label>Address</Form.Label>
+                <Form.Group className="my-4 addShow" onChange={handleFormData} controlId="address">
+                    <Form.Label
+                                  style={{
+                                    color:'#fe452d92',
+                                    fontWeight:'1000',
+                                }}
+                    >Address</Form.Label>
                     <Form.Control as="textarea" type="textarea" placeholder="address" name='address' />
                 </Form.Group>
 
@@ -302,7 +372,11 @@ const BloodRequest = () =>{
 
     
               
-                <Button variant="primary" type="button" onClick={handleSubmit}>
+                <Button variant="primary" type="button" 
+                              style={{
+                                fontWeight:'1000',
+                            }}
+                onClick={handleSubmit}>
                     Submit
                 </Button>
             </Form>

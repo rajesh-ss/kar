@@ -7,10 +7,8 @@ const HospitalInsideWrapper = ()=> {
     console.log(location.pathname)
     return (
         <Fragment>
-            {
-                
-            location.pathname !== '/hospital/login' &&  <HospitalTopBar/>     
-            
+            {   
+            location.pathname === '/hospital/login' || location.pathname === '/hospital/register' ?  <></> :<HospitalTopBar/>     
             }
             <Outlet/>
             

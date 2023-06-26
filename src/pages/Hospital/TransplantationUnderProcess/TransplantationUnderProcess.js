@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { envs } from "../../../utils/endpoint";
 import axios from "axios";
+import L from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { toast } from "react-toastify";
@@ -10,6 +11,14 @@ import { useNavigate } from "react-router-dom";
 const baseURL = envs.endpoint;
 
 const TransplantationUnderProcess = () => {
+
+
+  delete L.Icon.Default.prototype._getIconUrl;
+  L.Icon.Default.mergeOptions({
+    iconRetinaUrl: require('../../../assests/marker-icon-2x.png'),
+    iconUrl: require('../../../assests/marker-icon.png'),
+    shadowUrl: require('../../../assests/marker-shadow.png')
+  });
 
 
   const navigate = useNavigate();
@@ -117,46 +126,50 @@ const TransplantationUnderProcess = () => {
         updatedAt: "2023-06-04T09:11:37.756Z",
         __v: 0,
       },
+      "lat": "16.557589",
+      "long": "438.992166",
+      "position": "35.43",
+      "speed": "50"
     },
   ]);
 
   const [lon, setLon] = useState(13.007517);
   const [lat, setLan] = useState(77.491970);
   const [sp, setSp] = useState(0);
-  
-  
-  let position = [13.007517,77.491970]
-  let speed = 50
-    //geoData.lat, geoData.lng
 
-    const handleArrived = ()=>{
-        async function callApi() {
-            try {
-                await axios
-                    .put(`${baseURL}/hospital/transplantations/arrived/${kidneyTransplant[0]._id}/${localStorage.getItem('hospital_id')}`)
-                    .then((response) => {
-                        console.log(response.status)
-                        if (response.status === 200) {
-                            toast.success(`Succesfully `, {
-                                toastId: 'blood baner'
-                            })
-                            // props?.callForApiCallRerender();
-                            
-                        }
-                        else {
-                            toast.error(`unable to process `, {
-                                toastId: 'blood gister'
-                            })
-                            throw Error;
-                        }
-                    })
+
+  let position = [13.007517, 77.491970]
+  let speed = 50
+  //geoData.lat, geoData.lng
+
+  const handleArrived = () => {
+    async function callApi() {
+      try {
+        await axios
+          .put(`${baseURL}/hospital/transplantations/arrived/${kidneyTransplant[0]._id}/${localStorage.getItem('hospital_id')}`)
+          .then((response) => {
+            console.log(response.status)
+            if (response.status === 200) {
+              toast.success(`Succesfully `, {
+                toastId: 'blood baner'
+              })
+              // props?.callForApiCallRerender();
+
             }
-            catch (e) {
-                console.log(e);
+            else {
+              toast.error(`unable to process `, {
+                toastId: 'blood gister'
+              })
+              throw Error;
             }
-        }
-        callApi();
+          })
+      }
+      catch (e) {
+        console.log(e);
+      }
     }
+    callApi();
+  }
 
   useEffect(() => {
     async function callBloodApi() {
@@ -170,6 +183,9 @@ const TransplantationUnderProcess = () => {
             if (response.status === 200) {
               console.log(response?.data);
               setKidneyTransplant(response?.data);
+              setLon(Number(response.data[0].long));
+              setLan(Number(response.data[0].lat));
+              setSp(Number(response.data[0].speed));
               // Transplantation under progress 176
               // setLon(response?.data[0].lon);
               // setLan(response?.data[0].lat);
@@ -186,101 +202,161 @@ const TransplantationUnderProcess = () => {
     callBloodApi();
   }, []);
 
-  console.log(kidneyTransplant);
+  // console.log(kidneyTransplant);
+  console.log(lat, 'latitude')
+  console.log(lon, 'longitude')
+  console.log(sp, 'speed')
+
 
   return (
-    <div className="mx-5 px-5 my-5 border rounded">
-      <h1>Kidney Transplantation</h1>
+    <div className="mx-5 px-5 my-5  rounded">
+      <h1 style={{
+        color: '#fe452d92',
+        fontWeight: '1000'
+      }}>Kidney Transplantation</h1>
       <div className="mx-3 my-2">
         <div className="container">
-            <div className="row">
-            <div className="my-5 col border border-dark">
-          <h4 className="mt-4 mb-4" style={{ fontWeight: "bolder" }}>
-            Donor Details
-          </h4>
-          {/* {kidneyTransplant.map((ele) => {
+          <div className="row gx-5">
+            <div className="my-5 col" style={{
+              boxShadow: '0px 0px 8px #fe452d92',
+              fontWeight: '1000'
+            }}>
+              <h4 className="mt-4 mb-4" style={{
+                color: '#fe452d92',
+                fontWeight: '1000'
+              }}>
+                Donor Details
+              </h4>
+              {/* {kidneyTransplant.map((ele) => {
             return ( */}
               <>
                 <p>
-                  <span style={{ fontWeight: "bolder" }}>{`Name:  `}</span>
+                  <span style={{
+                    color: '#fe452d92',
+                    fontWeight: '1000'
+                  }}>{`Name:  `}</span>
                   {kidneyTransplant[0].name}
                 </p>
                 <p>
-                  <span style={{ fontWeight: "bolder" }}>
+                  <span style={{
+                    color: '#fe452d92',
+                    fontWeight: '1000'
+                  }}>
                     {`Blood Group: `}{" "}
                   </span>
                   {kidneyTransplant[0].bloodgroup}
                 </p>
                 <p>
-                  <span style={{ fontWeight: "bolder" }}>{`Phone No: `}</span>
+                  <span style={{
+                    color: '#fe452d92',
+                    fontWeight: '1000'
+                  }}>{`Phone No: `}</span>
                   {kidneyTransplant[0].phone}
                 </p>
               </>
-            {/* );
+              {/* );
           })} */}
-        </div>
+            </div>
 
-        <div className="my-5 col border border-dark">
-          <h4 className="mt-4 mb-4" style={{ fontWeight: "bolder" }}>
-            From Hospital Details
-          </h4>
+            <div className="my-5 col" style={{
+              boxShadow: '0px 0px 8px #fe452d92',
+              fontWeight: '1000'
+            }}>
+              <h4 className="mt-4 mb-4" style={{
+                color: '#fe452d92',
+                fontWeight: '1000'
+              }}>
+                From Hospital Details
+              </h4>
 
-          {/* {kidneyTransplant.map((ele) => {
+              {/* {kidneyTransplant.map((ele) => {
             return (*/}
-              <> 
+              <>
                 <p>
-                  <span style={{ fontWeight: "bolder" }}>{`Name: `}</span>
+                  <span style={{
+                    color: '#fe452d92',
+                    fontWeight: '1000'
+                  }}>{`Name: `}</span>
                   {kidneyTransplant[0].fromHospital.name}
                 </p>
                 <p>
-                  <span style={{ fontWeight: "bolder" }}>{`Address: `}</span>
-                {kidneyTransplant[0].fromHospital.address}
+                  <span style={{
+                    color: '#fe452d92',
+                    fontWeight: '1000'
+                  }}>{`Address: `}</span>
+                  {kidneyTransplant[0].fromHospital.address}
                 </p>
               </>
-            {/* );
+              {/* );
           })} */}
-        </div>
+            </div>
 
-        <div className="my-5 col border border-dark">
-          <h4 className="mt-3 mb-4" style={{ fontWeight: "bolder" }}>
-            To Hospital Details
-          </h4>
+            <div className="my-5 col" style={{
+              boxShadow: '0px 0px 8px #fe452d92',
+              fontWeight: '1000'
+            }}>
+              <h4 className="mt-3 mb-4" style={{
+                color: '#fe452d92',
+                fontWeight: '1000'
+              }}>
+                To Hospital Details
+              </h4>
 
-          {/* {kidneyTransplant.map((ele) => {
+              {/* {kidneyTransplant.map((ele) => {
             return ( */}
               <>
                 <p>
-                  <span style={{ fontWeight: "bolder" }}>{`Name: `}</span>
+                  <span style={{
+                    color: '#fe452d92',
+                    fontWeight: '1000'
+                  }}>{`Name: `}</span>
                   {kidneyTransplant[0].toHospital.name}
                 </p>
                 <p>
-                  <span style={{ fontWeight: "bolder" }}>{`Address: `}</span>
+                  <span style={{
+                    color: '#fe452d92',
+                    fontWeight: '1000'
+                  }}>{`Address: `}</span>
                   {kidneyTransplant[0]?.toHospital?.address}
                 </p>
               </>
-          {/* //   );
+              {/* //   );
           // })} */}
-        </div>
             </div>
+          </div>
         </div>
 
-        
-       
+
+
       </div>
-      <h1 className="mt-5">Live Location:</h1>
+      <h1 className="mt-5" style={{
+        color: '#fe452d92',
+        fontWeight: '1000'
+      }}>Live Location:</h1>
       <div className="my-3 mx-5 px-5">
-       <MapContainer center={[lon, lat]} zoom={12} scrollWheelZoom={true} style={{ height: '40vh', width: "100%", }}>
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      
-      <Marker position={[lon, lat]}>
-        <Popup>Speed: {speed}</Popup>
-      </Marker>
-      
-    </MapContainer>
+        <MapContainer
+          center={[lon, lat]}
+          zoom={12}
+          scrollWheelZoom={true}
+          style={{ height: '40vh', width: "100%", }}>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+
+          <Marker
+            position={[lat, lon]}
+
+          >
+            {/* <span>XX</span> */}
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+            {/* <Popup>Speed: {sp}</Popup> */}
+          </Marker>
+
+        </MapContainer>
       </div>
-          <div className="container d-flex justify-content-center my-5"><button className="btn btn-danger" onClick={handleArrived}>Arrived</button></div>
+      <div className="container d-flex justify-content-center my-5"><button className="btn btn-danger" onClick={handleArrived}>Arrived</button></div>
     </div>
   );
 };
